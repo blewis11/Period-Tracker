@@ -1,0 +1,16 @@
+db:
+  image: mongo
+  ports:
+    - "27017:27017"
+
+mongo-seed:
+  build: ./mongo-seed
+  links:
+    - db
+
+webserver:
+  build: ./webserver
+  ports:
+    - "49160:8080"
+  links:
+    - db
