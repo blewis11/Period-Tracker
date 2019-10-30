@@ -1,6 +1,6 @@
-import userData from './data/userData'
-import symptomsData from './data/symptomData'
-import userSymptomsData from './data/userSymptonData'
+import userData from '../data/user'
+import symptomsData from '../data/symptom'
+import userSymptomsData from '../data/userSymptom'
 
 const seedDatabase = (mongooseInstance: any, models: any) => {
   const { User, Symptom, UserSymptom } = models

@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose'
 
-const symptomSchema: Schema = new mongoose.Schema({
+const symptomSchema = new mongoose.Schema({
   id: {
     type: Number,
     unique: true
