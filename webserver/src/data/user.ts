@@ -1,9 +1,11 @@
 const users = [
   {
-    "userId": 1,
+    "id": 1,
+    "cycleAverage": 0
   },
   {
-    "userId": 2
+    "id": 2,
+    "cycleAverage": 0
   }
 ]
 
