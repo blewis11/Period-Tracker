@@ -60,7 +60,7 @@ test.before((t: any) => {
     }
   ]
   
-  const fetchUserSymptoms = stub(require('./fetchUserSymptoms'), "fetchUserSymptoms").resolves(testData)
+  const fetchUserSymptoms = stub(require('../database/queries/fetchUserSymptoms'), "fetchUserSymptoms").resolves(testData)
 
   t.context = {
     ...t.context,

@@ -1,7 +1,7 @@
 import { includes } from 'ramda'
 
 import { subDays, differenceInCalendarDays, isSameDay } from 'date-fns'
-import { fetchUserSymptoms } from './fetchUserSymptoms'
+import { fetchUserSymptoms } from '../database/queries/fetchUserSymptoms'
 
 const containsPreviousDay = (list: any[], date: Date): number | null => {
   let itemIndex = null
@@ -64,7 +64,11 @@ const calculateAverageCycle = async (UserSymptom: any, userId: number): Promise<
     : 0
 
   return averageLength
-} 
+}
+
+const calculateOverallCycleAverage = async (User: any): Promise<Number> => {
+  return null
+}
 
 export {
   createCycles,
