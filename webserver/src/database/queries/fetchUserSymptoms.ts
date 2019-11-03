@@ -4,6 +4,4 @@ const fetchUserSymptoms = async (UserSymptom: any, userId: number) => {
     .sort({ timeStamp: 'asc' }).exec()
 }
 
-export {
-  fetchUserSymptoms
-}
+export default fetchUserSymptoms

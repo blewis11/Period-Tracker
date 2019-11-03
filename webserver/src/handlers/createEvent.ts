@@ -2,9 +2,11 @@
 import { isEmpty } from 'ramda'
 
 import createUserSymptom from '../utils/createUserSymptom'
+import fetchSymptomById from '../database/queries/fetchSymptomById'
+import fetchUserByid from '../database/queries/fetchUserById'
 
 const createEvent = async (req: any, res: any, models: any) => {
-  const { Symptom } = models
+  const { Symptom, User } = models
 
   const body = req.query
 
@@ -19,19 +21,26 @@ const createEvent = async (req: any, res: any, models: any) => {
   }
 
   let symptom
+  let user
 
   try {
-    symptom = await Symptom.find({ id: symptomId }).exec()
+    symptom = await fetchSymptomById(Symptom, symptomId)
+    user = await fetchUserByid(User, userId)
   } catch (e) {
     throw e
   }
   
-  if (!symptom || isEmpty(symptom)) {
-    console.log(`no symptom found, aborting`)
+  if (!symptom || !user) {
     res.status(422).send("Could not process request") // TODO: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
   }
 
-  let data = await createUserSymptom(models, body)
+  let data 
+
+  try{ 
+    await createUserSymptom(models, body)
+  } catch (e) {
+    throw e
+  }
   
   res.json(data)
 }

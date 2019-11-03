@@ -1,6 +1,8 @@
+import fetchAllAverageCycles from '../database/queries/fetchAllAverageCycles'
+
 const calculateCycleAverage =  async (res: any, models: any) => {
   const { User } = models
-  const users = await User.find({}, 'cycleAverage').exec()
+  const users = await fetchAllAverageCycles(User)
 
   let averagesTotal = 0
 

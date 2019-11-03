@@ -2,6 +2,8 @@
 import { includes } from 'ramda'
 
 import { calculateAverageCycle } from './calculateCycleAverage'
+import setUserCycleAverage from '../database/queries/setUserCycleAverage'
+import createUserSymptomInDb from '../database/queries/createUserSymptom'
 
 const ACTIVE_PERIOD_SYMPTOM_IDS = ['1', '2', '3']
 
@@ -13,20 +15,16 @@ const createUserSymptom = async (models: any, requestParams: any) => {
   const { 
     user_id: userId,
     symptom: symptomId,
-    timestamp
   } = requestParams
 
   let data = {}
+  
   try {
-    data = await UserSymptom.create({
-      userId,
-      symptomId,
-      timeStamp: new Date(timestamp)
-    })
+    data = await createUserSymptomInDb(UserSymptom, requestParams)
     
     if (includes(symptomId, ACTIVE_PERIOD_SYMPTOM_IDS)) {
       const averageCycle = await calculateAverageCycle(UserSymptom, userId)
-      await User.where({'id': userId }).updateOne({ $set: { cycleAverage: averageCycle }}).exec()
+      await setUserCycleAverage(User, averageCycle, userId)
     }
   } catch (e) {
     throw e
