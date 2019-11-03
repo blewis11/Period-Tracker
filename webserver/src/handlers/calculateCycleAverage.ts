@@ -1,4 +1,16 @@
+const calculateCycleAverage =  async (res: any, models: any) => {
+  const { User } = models
+  const users = await User.find({}, 'cycleAverage').exec()
 
-const calculateCycleAverage = (req: any, res: any, models: any): Promise<Number> => {
-  return null
-} 
+  let averagesTotal = 0
+
+  const averages = users.map((user: any) => {
+    const { cycleAverage } = user
+    averagesTotal += cycleAverage
+  })
+
+  const overallAverage = averagesTotal / (averages.length)
+  res.json({overallAverage})
+}
+
+export default calculateCycleAverage

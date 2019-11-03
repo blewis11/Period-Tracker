@@ -66,10 +66,6 @@ const calculateAverageCycle = async (UserSymptom: any, userId: number): Promise<
   return averageLength
 }
 
-const calculateOverallCycleAverage = async (User: any): Promise<Number> => {
-  return null
-}
-
 export {
   createCycles,
   fetchUserSymptoms,

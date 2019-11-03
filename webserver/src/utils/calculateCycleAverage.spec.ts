@@ -1,7 +1,7 @@
 import anyTest, { TestInterface, } from 'ava'
 import { stub, SinonStub } from 'sinon'
 
-import { createCycles, calculateAverageCycle } from './calculateAverageCycle'
+import { createCycles, calculateAverageCycle } from './calculateCycleAverage'
 
 interface Context {
   testData: any,
