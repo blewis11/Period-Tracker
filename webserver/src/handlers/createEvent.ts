@@ -37,7 +37,7 @@ const createEvent = async (req: any, res: any, models: any) => {
   let data 
 
   try{ 
-    await createUserSymptom(models, body)
+    data = await createUserSymptom(models, body)
   } catch (e) {
     throw e
   }

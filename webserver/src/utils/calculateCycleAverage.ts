@@ -1,7 +1,7 @@
 import { includes } from 'ramda'
 
 import { subDays, differenceInCalendarDays, isSameDay } from 'date-fns'
-import fetchUserSymptoms from '../database/queries/fetchUserSymptoms'
+import { fetchUserSymptoms } from '../database/queries/fetchUserSymptoms'
 
 const containsPreviousDay = (list: any[], date: Date): number | null => {
   let itemIndex = null

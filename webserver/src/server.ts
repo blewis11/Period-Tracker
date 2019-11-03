@@ -1,19 +1,13 @@
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
 
-import connect from './database/connect'
-import seedDatabase from './database/seedDatabase'
-import createModels from './database/createModels'
+import { connect } from './database/connect'
 
 import configureRoutes from './configureRoutes'
 
-const { mongoose, db } = connect()
+const { models } = connect()
 
-const models = createModels(mongoose)
-
-seedDatabase(mongoose, models)
-
-db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+console.log({models})
 
 const PORT = 8080;
 const HOST = '0.0.0.0';

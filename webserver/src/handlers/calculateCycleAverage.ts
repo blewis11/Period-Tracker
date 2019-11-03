@@ -2,7 +2,13 @@ import fetchAllAverageCycles from '../database/queries/fetchAllAverageCycles'
 
 const calculateCycleAverage =  async (res: any, models: any) => {
   const { User } = models
-  const users = await fetchAllAverageCycles(User)
+  
+  let users
+  try {
+    users = await fetchAllAverageCycles(User)
+  } catch (e) {
+    throw e
+  }
 
   let averagesTotal = 0
 
@@ -12,7 +18,11 @@ const calculateCycleAverage =  async (res: any, models: any) => {
   })
 
   const overallAverage = averagesTotal / (averages.length)
-  res.json({overallAverage})
+  res.json({
+    average_cycle: {
+      length: overallAverage
+    } 
+  })
 }
 
 export default calculateCycleAverage
