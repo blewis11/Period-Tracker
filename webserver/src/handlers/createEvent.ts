@@ -42,7 +42,7 @@ const createEvent = async (req: any, res: any, models: any) => {
       })
 
       const averageCycle = await calculateAverageCycle(UserSymptom, userId)
-      await User.where({'id': userId}).update({ $set: { cycleAverage: averageCycle }}).exec()
+      await User.where({'id': userId }).updateOne({ $set: { cycleAverage: averageCycle }}).exec()
     } catch (e) {
       throw e
     }

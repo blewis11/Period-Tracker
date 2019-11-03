@@ -1,4 +1,5 @@
 import createEvent from './handlers/createEvent'
+import getUserCycleAverage from './handlers/getUserCycleAverage'
 
 const configureRoutes = (app: any, models: any) => {
   const { User, UserSymptom, Symptom } = models
@@ -44,6 +45,11 @@ const configureRoutes = (app: any, models: any) => {
   app.get('/cycles/average', (req: any, res: any) => {
     //calculate average
     res.send('todo')
+  })
+
+  app.get('/:userId/cycle/average', async (req: any, res: any) => {
+    const { userId } = req.params
+    await getUserCycleAverage(res, models, userId)
   })
 
 }

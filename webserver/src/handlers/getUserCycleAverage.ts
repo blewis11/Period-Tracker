@@ -1,6 +1,20 @@
 
 const getUserCycleAverage = async (res: any, models: any, userId: number) => {
   const { User } = models
-  const user = await User.find({ id: userId}).exec()
-  res.send(user.cycleAverage)
+
+  let user
+  try {
+    user = await User.findOne({ id: userId }).exec()
+  } catch (e) {
+    throw e
+  }
+
+  if (user) {
+    const cycleAverage = user.cycleAverage
+    res.json({cycleAverage})
+  } else {
+    res.send(null)
+  }
 } 
+
+export default getUserCycleAverage
