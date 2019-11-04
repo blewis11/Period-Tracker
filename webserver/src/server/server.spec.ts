@@ -56,7 +56,7 @@ test('given correct input data, a post request to /events should create a new Us
   const newUserSymptom = {
     user_id: "1",
     symptom: "1",
-    timestamp: "2017-04-25T18:25:43.511Z"
+    timestamp: "2019-04-25T18:25:43.511Z"
   }
 
   const { body } = await request(app).post('/events').query(newUserSymptom).set('Accept', 'application/json')
@@ -163,7 +163,6 @@ test('a get request to /cycles/average will return the overall cycle average ove
 
   const { body } = await request(app).get('/cycles/average')
   const { average_cycle: { length }} = body
-
   t.is(length, averageCycle)
 })
 
