@@ -28,7 +28,7 @@ docker ps
 ![](./helperImages/default-cycle.png?raw=true)
 
 * On Postman, or any http interface, make a POST request to http://0.0.0.0:49160/events - passing in the following params (and setting Content-Type to application/json)
-![](./helperImages/postman.png?raw=true) 
+![](./helperImages/postman-params.png?raw=true) 
 
 * This inserts a new UserSymptom for user 1, implicating that they're begun a new cycle a month after the beginning of their previous cycle
 
