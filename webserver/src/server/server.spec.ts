@@ -6,14 +6,14 @@ import { stub, SinonStub } from 'sinon'
 import { MongoMemoryServer } from 'mongodb-memory-server'
 import { differenceInCalendarDays } from 'date-fns'
 
-import { createModels } from '../database/createModels'
+import { createModels, Models } from '../database/createModels'
 import { seedDatabase } from '../database/seedDatabase'
 import { server } from './server'
 
 interface Context {
   connect: SinonStub,
   app: Express,
-  models: any[],
+  models: Models,
   mongod: MongoMemoryServer
 }
 
@@ -127,7 +127,7 @@ test('given a non-existing symptom or user id, /events will return an error', as
 })
 
 test('a get request to /cycles/average will return the overall cycle average over users', async (t: any) => {
-  const { app, models } = t.context
+  const { app } = t.context
 
   const userSymptomsToInsert = [
     {
@@ -156,7 +156,11 @@ test('a get request to /cycles/average will return the overall cycle average ove
     return request(app).post('/events').query(item).set('Accept', 'application/json')
   }))
   
-  const averageCycle = differenceInCalendarDays(new Date("2018-11-10T18:25:43.511Z"), new Date("2018-10-13T18:25:43.511Z")) / 2 // divide by two as there are two users
+  const averageCycle = differenceInCalendarDays(
+    new Date(userSymptomsToInsert[2].timestamp), 
+    new Date(userSymptomsToInsert[1].timestamp)
+  ) / 2 // divide by two as there are two users
+
   const { body } = await request(app).get('/cycles/average')
   const { average_cycle: { length }} = body
 

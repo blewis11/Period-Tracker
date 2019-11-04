@@ -1,11 +1,14 @@
+import { Mongoose } from 'mongoose'
+import { MongoError } from 'mongodb'
 import { userData } from './defaultData/user'
 import { symptomData } from './defaultData/symptom'
 import { userSymptomData } from './defaultData/userSymptom'
+import { Models } from './createModels'
 
-const seedDatabase = async (mongooseInstance: any, models: any) => {
+const seedDatabase = async (mongooseInstance: Mongoose, models: Models) => {
   const { User, Symptom, UserSymptom } = models
 
-  await User.collection.insert(userData, (err: any, docs: any) => {
+  await User.collection.insert(userData, (err: MongoError, docs: any) => {
     if (err) {
       throw err
     } else {
@@ -13,7 +16,7 @@ const seedDatabase = async (mongooseInstance: any, models: any) => {
     }
   })
 
-  await Symptom.collection.insert(symptomData, (err: any, docs: any) => {
+  await Symptom.collection.insert(symptomData, (err: MongoError, docs: any) => {
     if (err) {
       throw err
     } else {
@@ -21,7 +24,7 @@ const seedDatabase = async (mongooseInstance: any, models: any) => {
     }
   })
 
-  await UserSymptom.collection.insert(userSymptomData, (err: any, docs: any) => {
+  await UserSymptom.collection.insert(userSymptomData, (err: MongoError, docs: any) => {
     if (err) {
       throw err
     } else {

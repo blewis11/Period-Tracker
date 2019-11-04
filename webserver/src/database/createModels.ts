@@ -1,11 +1,19 @@
-import { userSchema } from './schema/user'
-import { symptomSchema } from './schema/symptom'
-import { userSymptomSchema } from './schema/userSymptom'
+import { Mongoose, Model } from 'mongoose'
+import { userSchema, UserType } from './schema/user'
+import { symptomSchema, SymptomType } from './schema/symptom'
+import { userSymptomSchema, UserSymptomType } from './schema/userSymptom'
 
-const createModels = (mongooseInstance: any) => {
-  const User = mongooseInstance.model('User', userSchema)
-  const Symptom = mongooseInstance.model('Symptom', symptomSchema)
-  const UserSymptom = mongooseInstance.model('UserSymptom', userSymptomSchema)
+// type Models = {Model<UserType | SymptomType | UserSymptomType>[]}
+interface Models {
+  User: Model<UserType>,
+  Symptom: Model<SymptomType>,
+  UserSymptom: Model<UserSymptomType>
+}
+
+const createModels = (mongooseInstance: Mongoose): Models => {
+  const User = mongooseInstance.model<UserType>('User', userSchema)
+  const Symptom = mongooseInstance.model<SymptomType>('Symptom', symptomSchema)
+  const UserSymptom = mongooseInstance.model<UserSymptomType>('UserSymptom', userSymptomSchema)
 
   return {
     User,
@@ -15,5 +23,6 @@ const createModels = (mongooseInstance: any) => {
 }
 
 export {
-  createModels
+  createModels,
+  Models
 }

@@ -1,4 +1,9 @@
-const createUserSymptomInDb = (UserSymptom: any, requestData: any) => {
+import { Model } from 'mongoose'
+import { Request } from 'express'
+
+import { UserSymptomType } from '../schema/userSymptom'
+
+const createUserSymptomInDb = (UserSymptom: Model<UserSymptomType>, requestData: Request) => {
   const {
     user_id: userId,
     symptom: symptomId,

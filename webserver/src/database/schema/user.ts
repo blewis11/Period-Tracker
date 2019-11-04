@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema, Document } from 'mongoose'
 
-const userSchema = new mongoose.Schema({
+const userSchema: Schema = new mongoose.Schema({
   id: {
     type: Number,
     unique: true
@@ -10,6 +10,12 @@ const userSchema = new mongoose.Schema({
   }
 })
 
+interface UserType extends Document {
+  id: number,
+  cycleAverage: number
+}
+
 export {
-  userSchema
+  userSchema,
+  UserType
 }

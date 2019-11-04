@@ -1,11 +1,12 @@
 
-import { isEmpty } from 'ramda'
+import { Request, Response } from 'express'
 
 import { createUserSymptom }  from '../utils/createUserSymptom'
 import { fetchSymptomById } from '../database/queries/fetchSymptomById'
 import { fetchUserByid } from '../database/queries/fetchUserById'
+import { Models } from '../database/createModels'
 
-const createEvent = async (req: any, res: any, models: any) => {
+const createEvent = async (req: Request, res: Response, models: Models) => {
   const { Symptom, User } = models
 
   const body = req.query

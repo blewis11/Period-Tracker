@@ -15,7 +15,6 @@ const connect = () => {
   seedDatabase(mongoose, models)
 
   return {
-    db,
     models
   }
 }

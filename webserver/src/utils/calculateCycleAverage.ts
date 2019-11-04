@@ -45,7 +45,7 @@ const createCycles = (userSymptomList: any): Date[][] => {
   return userSymptomGrouped
 }
 
-const calculateAverageCycle = async (UserSymptom: any, userId: number): Promise<number> => {
+const calculateAverageCycle = async (UserSymptom: any, userId: string): Promise<number> => {
   const userSymptoms = await fetchUserSymptoms(UserSymptom, userId)
   
   const cycles = createCycles(userSymptoms)

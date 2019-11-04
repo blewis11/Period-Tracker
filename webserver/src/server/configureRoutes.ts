@@ -1,27 +1,23 @@
-import { Express } from 'express'
+import { Express, Request, Response } from 'express'
+import { Model } from 'mongoose'
 
 import { createEvent } from '../handlers/createEvent'
-import { getUserCycleAverage } from '../handlers/getUserCycleAverage'
 import { calculateCycleAverage } from '../handlers/calculateCycleAverage'
 
-const configureRoutes = (app: Express, models: any) => {
-  app.get('/', (_: any, res: any) => {
+import { Models } from '../database/createModels'
+
+const configureRoutes = (app: Express, models: Models) => {
+  app.get('/', (_: Request, res: Response) => {
     res.send('fallback endpoint\n')
   })
 
-  app.post('/events', async (req: any, res: any) => {
+  app.post('/events', async (req: Request, res: Response) => {
     await createEvent(req, res, models)
   })
 
-  app.get('/cycles/average', async (_: any, res: any) => {
+  app.get('/cycles/average', async (_: Request, res: Response) => {
     await calculateCycleAverage(res, models)
   })
-
-  app.get('/:userId/cycle/average', async (req: any, res: any) => {
-    const { userId } = req.params
-    await getUserCycleAverage(res, models, userId)
-  })
-
 }
 
 export { configureRoutes }

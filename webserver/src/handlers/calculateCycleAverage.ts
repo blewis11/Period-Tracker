@@ -1,10 +1,15 @@
+import { Response } from 'express'
 import { isEmpty } from 'ramda' 
-import { fetchAllAverageCycles } from '../database/queries/fetchAllAverageCycles'
 
-const calculateCycleAverage =  async (res: any, models: any) => {
+import { fetchAllAverageCycles } from '../database/queries/fetchAllAverageCycles'
+import { Models } from '../database/createModels'
+import { UserType } from '../database/schema/user'
+
+const calculateCycleAverage =  async (res: Response, models: Models) => {
   const { User } = models
   
-  let users
+  let users: UserType[]
+
   try {
     users = await fetchAllAverageCycles(User)
   } catch (e) {
@@ -23,12 +28,12 @@ const calculateCycleAverage =  async (res: any, models: any) => {
 
   let averagesTotal = 0
 
-  const averages = users.map((user: any) => {
+  users.map((user: any) => {
     const { cycleAverage } = user
     averagesTotal += cycleAverage
   })
 
-  const overallAverage = averagesTotal / (averages.length)
+  const overallAverage = averagesTotal / (users.length)
   res.json({
     average_cycle: {
       length: overallAverage

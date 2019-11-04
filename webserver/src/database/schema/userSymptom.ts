@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema, Document } from 'mongoose'
 
-const userSymptomSchema = new mongoose.Schema({
+const userSymptomSchema: Schema = new mongoose.Schema({
   userId: {
     type: Number
   },
@@ -12,6 +12,13 @@ const userSymptomSchema = new mongoose.Schema({
   }
 })
 
+interface UserSymptomType extends Document {
+  userId: number,
+  symptomId: number,
+  timeStamp: Date
+}
+
 export {
-  userSymptomSchema
+  userSymptomSchema,
+  UserSymptomType
 }
