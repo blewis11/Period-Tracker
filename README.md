@@ -64,4 +64,6 @@ The application comes with the following default data, which you can find in src
 
 * Currently I only have one unit test -> src/utils/calculateCycleAverage. I'd write more for my modules, that ways its much easier to detect bugs and pinpoint where they're coming from. I would also write more usecases on the integration test (ie having invalid string and symptom ids like in the first point)
 
+* I like having descriptions of methods via comments, but I didn't have time go through all of my code and document each method
+
 * A pretty basic one but, i'd integrate TSLint - I can't often rely on only myself to make code pretty
