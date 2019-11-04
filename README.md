@@ -48,6 +48,8 @@ I decided create separate objects for these because it allows for more flexibili
 
 Another major design decision I made was to make averageCycle a field on the User object. Calculating this for an individual user is trivial and doesn't take too much time. Calculating them for every user at once, however, could get messy. Whenever a UserSymptom that represents a day of bleeding is created, the corresponding user will have their averageCycle updated. The /cycles/average endpoint thus only needs to fetch all the cycleAverages from each user and average those together. There were lots of ways to do this but when I started this challenge that one made the most sense to me.
 
+In the actual calculation for the cycle average for a user, I fetch all the relevant UserSymptoms in ascending date. These are then grouped into periods, which looks like an array of arrays of Dates. Each inner array represents a period. I created this structure because, in addition to using it to calculate the average cycle length, it could be used to calculate the average period length if we wanted to.
+
 The application comes with the following default data, which you can find in src/database/defaultData. It's essentially two users, one of whom has data entered for their period (lasting from 2019-04-23 until the 2019-04-24). Both users have an average cycle of 0, since there isn't enough data present to calculate. By creating UserSymptoms you can see how the overall average is altered.
 
 
