@@ -5,7 +5,7 @@
   "author": "First Last <first.last@example.com>",
   "main": "server.js",
   "scripts": {
-    "start": "npm run build && node dist/server.js",
+    "start": "npm run build && node dist/index.js",
     "build": "rm -rf dist && tsc",
     "test": "npm run build && ava -v"
   },
@@ -13,6 +13,7 @@
     "@types/express": "^4.17.1",
     "@types/mongoose": "^5.5.23",
     "@types/ramda": "^0.26.33",
+    "@types/supertest": "^2.0.8",
     "body-parser": "^1.19.0",
     "date-fns": "^2.6.0",
     "express": "^4.16.1",
@@ -21,9 +22,12 @@
     "typescript": "^3.6.4"
   },
   "devDependencies": {
+    "@types/mongodb-memory-server": "^2.3.0",
     "@types/sinon": "^7.5.0",
     "ava": "^2.4.0",
-    "sinon": "^7.5.0"
+    "mongodb-memory-server": "^6.0.1",
+    "sinon": "^7.5.0",
+    "supertest": "^4.0.2"
   },
   "ava": {
     "files": [

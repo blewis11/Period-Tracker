@@ -1,14 +1,14 @@
-import express from 'express'
-import * as bodyParser from 'body-parser'
+import express, { Express } from 'express'
+import bodyParser from 'body-parser'
 
 import { connect } from './database/connect'
 
 import { configureRoutes } from './configureRoutes'
 
-const server = () => {
+const server = (): Express => {
   const { models } = connect()
 
-  const app = express()
+  const app: Express = express()
 
   configureRoutes(app, models)
 

@@ -5,6 +5,8 @@ const createUserSymptomInDb = (UserSymptom: any, requestData: any) => {
     timestamp
   } = requestData
 
+  console.log({timestamp})
+
   return UserSymptom.create({
     userId,
     symptomId,

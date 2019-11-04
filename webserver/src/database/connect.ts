@@ -1,4 +1,4 @@
-import * as mongoose from 'mongoose'
+import mongoose from 'mongoose'
 
 import { createModels } from './createModels'
 import { seedDatabase } from './seedDatabase'
