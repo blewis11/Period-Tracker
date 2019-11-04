@@ -9,9 +9,6 @@ import { Models } from '../database/createModels'
 import { UserSymptomType } from '../database/schema/userSymptom'
 const ACTIVE_PERIOD_SYMPTOM_IDS = ['1', '2', '3']
 
-// if the symptom is a period heaviness, and an entity already exists on the same day -> overwrite
-// if symptom not for period heaviness, and entity already exists on the same day -> do not insert
-
 const createUserSymptom = async (models: Models, requestParams: Request): Promise<UserSymptomType | {} > => {
   const { UserSymptom, User } = models
   const { 

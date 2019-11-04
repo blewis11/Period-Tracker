@@ -18,7 +18,7 @@ const createEvent = async (req: Request, res: Response, models: Models) => {
   } = body
 
   if (!userId || !symptomId || !timestamp|| isNaN(new Date(timestamp).getTime())){
-    res.send("invalid request") // TODO: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    res.send("invalid request") 
     return
   }
 
@@ -33,7 +33,7 @@ const createEvent = async (req: Request, res: Response, models: Models) => {
   }
 
   if (!symptom || !user) {
-    res.send("Could not process request") // TODO: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    res.send("Could not process request") 
     return 
   }
 

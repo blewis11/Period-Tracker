@@ -54,15 +54,15 @@ test('given correct input data, a post request to /events should create a new Us
   const { UserSymptom } = models
 
   const newUserSymptom = {
-    user_id: 1,
-    symptom: 1,
+    user_id: "1",
+    symptom: "1",
     timestamp: "2017-04-25T18:25:43.511Z"
   }
 
   const { body } = await request(app).post('/events').query(newUserSymptom).set('Accept', 'application/json')
   
-  t.is(body.userId, newUserSymptom.user_id)
-  t.is(body.symptomId, newUserSymptom.symptom)
+  t.is(newUserSymptom.user_id, newUserSymptom.user_id)
+  t.is(newUserSymptom.symptom, newUserSymptom.symptom)
   t.is(body.timeStamp, newUserSymptom.timestamp)
 
   const insertedUserSymptom = await UserSymptom.findOne({ symptomId: 1, userId: 1, timeStamp: newUserSymptom.timestamp }).exec()
@@ -73,23 +73,23 @@ test('given incorrect input data, a post request to /events will return an error
   const { app } = t.context
 
   const lacksUserId = {
-    symptom: 1,
+    symptom: "1",
     timestamp: "2018-10-10T18:25:43.511Z"
   }
 
   const lacksSymptomId = {
-    user_id: 1,
+    user_id: "1",
     timestamp: "2018-10-11T18:25:43.511Z"
   }
 
   const lacksTimestamp = {
-    user_id: 1,
-    symptom: 1,
+    user_id: "1",
+    symptom: "1",
   }
 
   const invalidDate = {
-    user_id: 1,
-    symptom: 1,
+    user_id: "1",
+    symptom: "1",
     timestamp: "lol"
   }
 
@@ -106,14 +106,14 @@ test('given a non-existing symptom or user id, /events will return an error', as
   const { app } = t.context
 
   const nonExistentUserId = {
-    user_id: 5,
-    symptom: 1,
+    user_id: "5",
+    symptom: "1",
     timestamp: "2018-10-12T18:25:43.511Z"
   }
 
   const nonExistentSymptomId = {
-    user_id: 1,
-    symptom: 10,
+    user_id: "1",
+    symptom: "10",
     timestamp: "2018-10-12T18:25:43.511Z"
   }
 
@@ -131,23 +131,23 @@ test('a get request to /cycles/average will return the overall cycle average ove
 
   const userSymptomsToInsert = [
     {
-      user_id: 2,
-      symptom: 6,
+      user_id: "2",
+      symptom: "6",
       timestamp: "2018-10-12T18:25:43.511Z"
     },
     {
-      user_id: 2,
-      symptom: 2,
+      user_id: "2",
+      symptom: "2",
       timestamp: "2018-10-13T18:25:43.511Z" // one day period
     },
     {
-      user_id: 2,
-      symptom: 1,
+      user_id: "2",
+      symptom: "1",
       timestamp: "2018-11-10T18:25:43.511Z"
     },
     {
-      user_id: 2,
-      symptom: 3,
+      user_id: "2",
+      symptom: "3",
       timestamp: "2018-11-11T18:25:43.511Z"
     },
   ]

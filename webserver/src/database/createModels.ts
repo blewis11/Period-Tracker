@@ -3,7 +3,6 @@ import { userSchema, UserType } from './schema/user'
 import { symptomSchema, SymptomType } from './schema/symptom'
 import { userSymptomSchema, UserSymptomType } from './schema/userSymptom'
 
-// type Models = {Model<UserType | SymptomType | UserSymptomType>[]}
 interface Models {
   User: Model<UserType>,
   Symptom: Model<SymptomType>,
