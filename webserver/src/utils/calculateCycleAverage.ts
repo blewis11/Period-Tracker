@@ -47,6 +47,7 @@ const createCycles = (userSymptomList: any): Date[][] => {
 
 const calculateAverageCycle = async (UserSymptom: any, userId: number): Promise<number> => {
   const userSymptoms = await fetchUserSymptoms(UserSymptom, userId)
+  
   const cycles = createCycles(userSymptoms)
   let cycleLengthSum = 0
 

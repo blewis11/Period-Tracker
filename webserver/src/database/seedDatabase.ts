@@ -28,8 +28,6 @@ const seedDatabase = async (mongooseInstance: any, models: any) => {
         console.info('userSymptoms were successfully stored.')
     }
   })
-
-  console.log(`database seeded`)
 }
 
 export {
