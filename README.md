@@ -50,7 +50,7 @@ Another major design decision I made was to make averageCycle a field on the Use
 
 In the actual calculation for the cycle average for a user, I fetch all the relevant UserSymptoms in ascending date. These are then grouped into periods, which looks like an array of arrays of Dates. Each inner array represents a period. I created this structure because, in addition to using it to calculate the average cycle length, it could be used to calculate the average period length if we wanted to.
 
-The application comes with the following default data, which you can find in src/database/defaultData. It's essentially two users, one of whom has data entered for their period (lasting from 2019-04-23 until the 2019-04-24). Both users have an average cycle of 0, since there isn't enough data present to calculate. By creating UserSymptoms you can see how the overall average is altered.
+The application comes with the default data, which you can find in src/database/defaultData. It's essentially two users, one of whom has data entered for their period (lasting from 2019-04-23 until the 2019-04-24). Both users have an average cycle of 0, since there isn't enough data present to calculate. By creating UserSymptoms you can see how the overall average is altered.
 
 
 ### Future improvements
