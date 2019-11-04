@@ -36,7 +36,7 @@ docker ps
 (user 1 has an average cycle length of 31, user 2 still has an average cycle of 0 - thus the average is 31/2 = 15.5)
 ![](./helperImages/updated-cycle.png?raw=true)
 
-* That's the jist of it! The API will return an error message with invalid inputs - and the overall average is only adjusted when a bleeding-type symptom (ids of 1,2,3) are submitted
+* That's the jist of it! The API will return an error message if a nonexisting user or symptom id is passed through, as well as if any of the inputs are null - and the overall average is only adjusted when a bleeding-type symptom (ids of 1,2,3) are submitted
 
 ### The Overall Design
 The database structure is comprised of:
