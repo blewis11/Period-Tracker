@@ -1,7 +1,7 @@
-#### Requirements
+### Requirements
 * Docker and Docker-Compose installed
 
-#### To Run && Brief Demo
+### To Run && Brief Demo
 * Clone the repository
 ```
 git clone https://github.com/blewis11/Period-Tracker && cd Period-Tracker
@@ -38,7 +38,7 @@ docker ps
 
 * That's the jist of it! The API will return an error message with invalid inputs - and the overall average is only adjusted when a bleeding-type symptom (ids of 1,2,3) are submitted
 
-#### The Overall Design
+### The Overall Design
 The database structure is comprised of:
 * **Users** : An object that describes a user, it only contains an id and a cycleAverage field
 * **Symptoms**: An object that describes symptoms, it contains an id and a description (as specified in the assignment description)
@@ -51,7 +51,7 @@ Another major design decision I made was to make averageCycle a field on the Use
 The application comes with the following default data, which you can find in src/database/defaultData. It's essentially two users, one of whom has data entered for their period (lasting from 2019-04-23 until the 2019-04-24). Both users have an average cycle of 0, since there isn't enough data present to calculate. By creating UserSymptoms you can see how the overall average is altered.
 
 
-#### Future improvements
+### Future improvements
 * This one is a bug: in the handler for /events - the symptom and user ids are not type checked. If you pass through a string value that cannot be converted into a number, the server will crash. This can be solved by simply using a typeof check. I didn't have time to do this
 
 * if the UserSymptom is created that represents a bleeding day, and another bleeding UserSymptom already exists on the same day - then currently the database will contain two different bleeding heaviness symptoms for a user on the same day (you can't have both a heavy and a light flow in the same day...right?). In the future I would change this to instead overwrite the existing symptom
