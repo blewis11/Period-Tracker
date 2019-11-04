@@ -1,23 +1,24 @@
-import * as express from 'express'
+import express from 'express'
 import * as bodyParser from 'body-parser'
 
 import { connect } from './database/connect'
 
-import configureRoutes from './configureRoutes'
+import { configureRoutes } from './configureRoutes'
 
-const { models } = connect()
+const server = () => {
+  const { models } = connect()
 
-console.log({models})
+  const app = express()
 
-const PORT = 8080;
-const HOST = '0.0.0.0';
+  configureRoutes(app, models)
 
-const app = express();
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded())
 
-configureRoutes(app, models)
+  return app
+}
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded())
+export {
+  server
+}
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`)

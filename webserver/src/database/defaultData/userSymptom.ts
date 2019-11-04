@@ -1,4 +1,4 @@
-const userSymptoms = [
+const userSymptomData = [
   {
     userId: 1,
     symptomId: 1,
@@ -11,4 +11,4 @@ const userSymptoms = [
   }
 ]
 
-export default userSymptoms
+export { userSymptomData }

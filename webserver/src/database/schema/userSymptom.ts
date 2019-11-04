@@ -12,4 +12,6 @@ const userSymptomSchema = new mongoose.Schema({
   }
 })
 
-export default userSymptomSchema
+export {
+  userSymptomSchema
+}

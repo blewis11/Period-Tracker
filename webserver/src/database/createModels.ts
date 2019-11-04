@@ -1,6 +1,6 @@
-import userSchema from './schema/user'
-import symptomSchema from './schema/symptom'
-import userSymptomSchema from './schema/userSymptom'
+import { userSchema } from './schema/user'
+import { symptomSchema } from './schema/symptom'
+import { userSymptomSchema } from './schema/userSymptom'
 
 const createModels = (mongooseInstance: any) => {
   const User = mongooseInstance.model('User', userSchema)
@@ -14,4 +14,6 @@ const createModels = (mongooseInstance: any) => {
   }
 }
 
-export default createModels
+export {
+  createModels
+}

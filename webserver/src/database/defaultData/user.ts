@@ -1,4 +1,4 @@
-const users = [
+const userData = [
   {
     "id": 1,
     "cycleAverage": 0
@@ -9,4 +9,4 @@ const users = [
   }
 ]
 
-export default users
+export { userData }

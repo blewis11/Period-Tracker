@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose'
 
-import createModels from './createModels'
-import seedDatabase from './seedDatabase'
+import { createModels } from './createModels'
+import { seedDatabase } from './seedDatabase'
 
 const connect = () => {
   const mongoDB = 'mongodb://db:27017/tracker_information'

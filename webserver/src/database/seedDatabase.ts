@@ -1,6 +1,6 @@
-import userData from './defaultData/user'
-import symptomsData from './defaultData/symptom'
-import userSymptomsData from './defaultData/userSymptom'
+import { userData } from './defaultData/user'
+import { symptomData } from './defaultData/symptom'
+import { userSymptomData } from './defaultData/userSymptom'
 
 const seedDatabase = (mongooseInstance: any, models: any) => {
   const { User, Symptom, UserSymptom } = models
@@ -13,7 +13,7 @@ const seedDatabase = (mongooseInstance: any, models: any) => {
     }
   })
 
-  Symptom.collection.insert(symptomsData, (err: any, docs: any) => {
+  Symptom.collection.insert(symptomData, (err: any, docs: any) => {
     if (err) {
       throw err
     } else {
@@ -21,7 +21,7 @@ const seedDatabase = (mongooseInstance: any, models: any) => {
     }
   })
 
-  UserSymptom.collection.insert(userSymptomsData, (err: any, docs: any) => {
+  UserSymptom.collection.insert(userSymptomData, (err: any, docs: any) => {
     if (err) {
       throw err
     } else {
@@ -30,4 +30,6 @@ const seedDatabase = (mongooseInstance: any, models: any) => {
   })
 }
 
-export default seedDatabase
+export {
+  seedDatabase
+}

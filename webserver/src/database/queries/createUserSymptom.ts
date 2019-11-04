@@ -1,4 +1,4 @@
-const createUserSymptom = (UserSymptom: any, requestData: any) => {
+const createUserSymptomInDb = (UserSymptom: any, requestData: any) => {
   const {
     user_id: userId,
     symptom: symptomId,
@@ -12,4 +12,6 @@ const createUserSymptom = (UserSymptom: any, requestData: any) => {
   })
 }
 
-export default createUserSymptom
+export { 
+  createUserSymptomInDb
+}

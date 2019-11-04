@@ -1,6 +1,6 @@
-import createEvent from './handlers/createEvent'
-import getUserCycleAverage from './handlers/getUserCycleAverage'
-import calculateCycleAverage from './handlers/calculateCycleAverage'
+import { createEvent } from './handlers/createEvent'
+import { getUserCycleAverage } from './handlers/getUserCycleAverage'
+import { calculateCycleAverage } from './handlers/calculateCycleAverage'
 
 const configureRoutes = (app: any, models: any) => {
   app.get('/', (_: any, res: any) => {
@@ -22,4 +22,4 @@ const configureRoutes = (app: any, models: any) => {
 
 }
 
-export default configureRoutes
+export { configureRoutes }

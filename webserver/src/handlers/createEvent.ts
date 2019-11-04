@@ -1,9 +1,9 @@
 
 import { isEmpty } from 'ramda'
 
-import createUserSymptom from '../utils/createUserSymptom'
-import fetchSymptomById from '../database/queries/fetchSymptomById'
-import fetchUserByid from '../database/queries/fetchUserById'
+import { createUserSymptom }  from '../utils/createUserSymptom'
+import { fetchSymptomById } from '../database/queries/fetchSymptomById'
+import { fetchUserByid } from '../database/queries/fetchUserById'
 
 const createEvent = async (req: any, res: any, models: any) => {
   const { Symptom, User } = models
@@ -36,7 +36,7 @@ const createEvent = async (req: any, res: any, models: any) => {
 
   let data 
 
-  try{ 
+  try { 
     data = await createUserSymptom(models, body)
   } catch (e) {
     throw e
@@ -45,4 +45,6 @@ const createEvent = async (req: any, res: any, models: any) => {
   res.json(data)
 }
 
-export default createEvent
+export {
+  createEvent
+}

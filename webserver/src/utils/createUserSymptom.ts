@@ -2,8 +2,8 @@
 import { includes } from 'ramda'
 
 import { calculateAverageCycle } from './calculateCycleAverage'
-import setUserCycleAverage from '../database/queries/setUserCycleAverage'
-import createUserSymptomInDb from '../database/queries/createUserSymptom'
+import { setUserCycleAverage } from '../database/queries/setUserCycleAverage'
+import { createUserSymptomInDb } from '../database/queries/createUserSymptom'
 
 const ACTIVE_PERIOD_SYMPTOM_IDS = ['1', '2', '3']
 
@@ -33,4 +33,6 @@ const createUserSymptom = async (models: any, requestParams: any) => {
   return data
 }
 
-export default createUserSymptom
+export {
+  createUserSymptom
+}

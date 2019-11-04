@@ -1,4 +1,4 @@
-const symptoms = [
+const symptomData = [
   {
     id: 1,
     description: "light bleeding"
@@ -25,4 +25,4 @@ const symptoms = [
   },
 ]
 
-export default symptoms
+export { symptomData }

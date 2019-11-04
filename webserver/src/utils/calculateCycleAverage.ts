@@ -1,5 +1,3 @@
-import { includes } from 'ramda'
-
 import { subDays, differenceInCalendarDays, isSameDay } from 'date-fns'
 import { fetchUserSymptoms } from '../database/queries/fetchUserSymptoms'
 

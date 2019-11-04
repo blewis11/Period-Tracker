@@ -17,4 +17,6 @@ const getUserCycleAverage = async (res: any, models: any, userId: number) => {
   }
 } 
 
-export default getUserCycleAverage
+export {
+  getUserCycleAverage
+}
