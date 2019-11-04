@@ -1,4 +1,4 @@
-import { server } from './server'
+import { server } from './server/server'
 
 const PORT = 8080
 const HOST = '0.0.0.0'

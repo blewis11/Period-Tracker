@@ -1,7 +1,7 @@
 import express, { Express } from 'express'
 import bodyParser from 'body-parser'
 
-import { connect } from './database/connect'
+import { connect } from '../database/connect'
 
 import { configureRoutes } from './configureRoutes'
 

@@ -1,15 +1,19 @@
 import anyTest, { TestInterface } from 'ava'
+import { Express } from 'express'
 import { stub, SinonStub } from 'sinon'
 import request from 'supertest'
 import { MongoMemoryServer } from 'mongodb-memory-server'
-import mongoose from 'mongoose'
+import mongoose, { Model, Schema } from 'mongoose'
 
-import { createModels } from './database/createModels'
-import { seedDatabase } from './database/seedDatabase'
+import { createModels } from '../database/createModels'
+import { seedDatabase } from '../database/seedDatabase'
 import { server } from './server'
+
 interface Context {
   connect: SinonStub,
-  app: any
+  app: Express,
+  models: any[],
+  mongod: MongoMemoryServer
 }
 
 const test = anyTest as TestInterface<Context>
@@ -30,7 +34,7 @@ test.before(async (t: any) => {
   const models = createModels(mongoose)
   seedDatabase(mongoose, models)
   
-  const connect = stub(require('./database/connect'), "connect").returns({ models })
+  const connect = stub(require('../database/connect'), "connect").returns({ models })
   const serverInstance = server()
   const app = serverInstance.listen(8081, '0.0.0.0')
 

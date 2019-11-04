@@ -1,8 +1,8 @@
 import { Express } from 'express'
 
-import { createEvent } from './handlers/createEvent'
-import { getUserCycleAverage } from './handlers/getUserCycleAverage'
-import { calculateCycleAverage } from './handlers/calculateCycleAverage'
+import { createEvent } from '../handlers/createEvent'
+import { getUserCycleAverage } from '../handlers/getUserCycleAverage'
+import { calculateCycleAverage } from '../handlers/calculateCycleAverage'
 
 const configureRoutes = (app: Express, models: any) => {
   app.get('/', (_: any, res: any) => {
