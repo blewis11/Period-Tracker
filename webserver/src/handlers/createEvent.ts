@@ -17,7 +17,8 @@ const createEvent = async (req: any, res: any, models: any) => {
   } = body
 
   if (!userId || !symptomId || !timestamp){
-    res.status(400).send("invalid request") // TODO: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    res.send("invalid request") // TODO: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    return
   }
 
   let symptom
@@ -31,7 +32,8 @@ const createEvent = async (req: any, res: any, models: any) => {
   }
   
   if (!symptom || !user) {
-    res.status(422).send("Could not process request") // TODO: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    res.send("Could not process request") // TODO: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    return 
   }
 
   let data 

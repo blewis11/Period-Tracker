@@ -9,7 +9,7 @@ const seedDatabase = async (mongooseInstance: any, models: any) => {
     if (err) {
       throw err
     } else {
-        console.info('users were successfully stored.');
+        console.info('users were successfully stored.')
     }
   })
 
@@ -17,7 +17,7 @@ const seedDatabase = async (mongooseInstance: any, models: any) => {
     if (err) {
       throw err
     } else {
-        console.info('symptoms were successfully stored.');
+        console.info('symptoms were successfully stored.')
     }
   })
 
@@ -25,7 +25,7 @@ const seedDatabase = async (mongooseInstance: any, models: any) => {
     if (err) {
       throw err
     } else {
-        console.info('userSymptoms were successfully stored.');
+        console.info('userSymptoms were successfully stored.')
     }
   })
 

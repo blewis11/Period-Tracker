@@ -1,9 +1,9 @@
 import anyTest, { TestInterface } from 'ava'
 import { Express } from 'express'
 import { stub, SinonStub } from 'sinon'
-import request from 'supertest'
 import { MongoMemoryServer } from 'mongodb-memory-server'
-import mongoose, { Model, Schema } from 'mongoose'
+import mongoose from 'mongoose'
+import request from 'supertest'
 
 import { createModels } from '../database/createModels'
 import { seedDatabase } from '../database/seedDatabase'
@@ -20,7 +20,7 @@ const test = anyTest as TestInterface<Context>
 
 test.before(async (t: any) => {
   const mongod = new MongoMemoryServer()
-  const uri = await mongod.getConnectionString();
+  const uri = await mongod.getConnectionString()
 
   const mongooseOpts = {
       useNewUrlParser: true,
@@ -68,8 +68,31 @@ test('given correct input data, a post request to /events should create a new Us
   t.truthy(insertedUserSymptom)
 })
 
-test('given incorrect input data, a post request to /events will return an error and not create a new UserSymptom', async (t: any) => {
-  t.pass()
+test('given incorrect input data, a post request to /events will return an error', async (t: any) => {
+  const { app, models } = t.context
+
+  const lacksUserId = {
+    symptom: 1,
+    timestamp: "2018-09-02T18:25:43.511Z"
+  }
+
+  const lacksSymptomId = {
+    user_id: 1,
+    timestamp: "2018-09-02T18:25:43.511Z"
+  }
+
+  const lacksTimestamp = {
+    user_id: 1,
+    symptom: 1,
+  }
+
+  const itemsToInsert = [ lacksUserId, lacksSymptomId, lacksTimestamp ]
+
+  for (let i = 0; i < itemsToInsert.length; i++ ){
+    const item = itemsToInsert[i]
+    const { text } = await request(app).post('/events').query(item).set('Accept', 'application/json')
+    t.is(text, 'invalid request')
+  }
 })
 
 test('given a non-existing symptom or user id, /events will return an error and not create a new UserSymptom', async (t: any) => {
