@@ -13,7 +13,7 @@ docker-compose up
 ```
 
 * Wait for the images to build, you'll see a bunch of output in the terminal
-![](./helperImages/Screen Shot 2019-11-04 at 19.03.20.png)
+![]("Screen Shot 2019-11-04 at 19.03.20.png")
 
 * Run the following command to check that both the db and api are running
 ```
