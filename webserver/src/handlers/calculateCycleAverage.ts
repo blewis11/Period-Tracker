@@ -28,7 +28,7 @@ const calculateCycleAverage =  async (res: Response, models: Models) => {
 
   let averagesTotal = 0
 
-  users.map((user: any) => {
+  users.map((user: UserType) => {
     const { cycleAverage } = user
     averagesTotal += cycleAverage
   })

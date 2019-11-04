@@ -12,7 +12,7 @@ const connect = () => {
 
   const models = createModels(mongoose)
 
-  seedDatabase(mongoose, models)
+  seedDatabase(models)
 
   return {
     models

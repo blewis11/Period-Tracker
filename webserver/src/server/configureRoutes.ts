@@ -1,5 +1,4 @@
 import { Express, Request, Response } from 'express'
-import { Model } from 'mongoose'
 
 import { createEvent } from '../handlers/createEvent'
 import { calculateCycleAverage } from '../handlers/calculateCycleAverage'

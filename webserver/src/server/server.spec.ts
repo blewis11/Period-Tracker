@@ -33,7 +33,7 @@ test.before(async (t: any) => {
   await mongoose.connect(uri, mongooseOpts)
   
   const models = createModels(mongoose)
-  seedDatabase(mongoose, models)
+  seedDatabase(models)
   
   const connect = stub(require('../database/connect'), "connect").returns({ models })
   const serverInstance = server()

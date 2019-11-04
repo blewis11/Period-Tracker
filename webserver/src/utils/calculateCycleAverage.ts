@@ -1,7 +1,10 @@
+import { Model } from 'mongoose'
+
 import { subDays, differenceInCalendarDays, isSameDay } from 'date-fns'
 import { fetchUserSymptoms } from '../database/queries/fetchUserSymptoms'
+import { UserSymptomType } from '../database/schema/userSymptom'
 
-const containsPreviousDay = (list: any[], date: Date): number | null => {
+const containsPreviousDay = (list: Date[][], date: Date): number | null => {
   let itemIndex = null
 
   if (list.length == 0) {
@@ -26,10 +29,10 @@ const addToExistingGroup = (list: Date[][], date: Date, index: number): Date[][]
   return updatedList
 }
 
-const createCycles = (userSymptomList: any): Date[][] => {
-  const userSymptomGrouped: any[] = []
+const createCycles = (userSymptomList: UserSymptomType[]): Date[][] => {
+  const userSymptomGrouped: Date[][] = []
 
-  userSymptomList.map((userSymptom: any) => {
+  userSymptomList.map((userSymptom: UserSymptomType) => {
     const timeStamp = userSymptom.timeStamp
     const previousDay = subDays(timeStamp, 1)
     
@@ -45,7 +48,7 @@ const createCycles = (userSymptomList: any): Date[][] => {
   return userSymptomGrouped
 }
 
-const calculateAverageCycle = async (UserSymptom: any, userId: string): Promise<number> => {
+const calculateAverageCycle = async (UserSymptom: Model<UserSymptomType>, userId: string): Promise<number> => {
   const userSymptoms = await fetchUserSymptoms(UserSymptom, userId)
   
   const cycles = createCycles(userSymptoms)

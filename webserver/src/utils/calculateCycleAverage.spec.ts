@@ -4,7 +4,7 @@ import { stub, SinonStub } from 'sinon'
 import { createCycles, calculateAverageCycle } from './calculateCycleAverage'
 
 interface Context {
-  testData: any,
+  testData: TestData[],
   fetchUserSymptoms: SinonStub
 }
 
